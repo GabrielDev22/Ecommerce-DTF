@@ -1,0 +1,27 @@
+<div class="container text-center">
+  <div class="row mt-8rem">
+    <div class="col">
+      <img class="rounded img-fluid shadow bg-black" src="../../assets/img/portadaEcommerce.jpg" alt="EcommerceImagen">
+      </div>
+      <div class="col-5">
+        <div class="mb-5">
+          <h2 class="text-center">Inicio de sesíon</h2>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Username</label>
+          <input type="email" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Password</label>
+          <input type="password" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="*********">
+        </div>
+        <div>
+          <button type="button" class="btn mt-3 p-2 text-black btn-outline-info w-75">Login</button>
+          <div class="d-flex ml-5rem">
+            <p class="fs-6 text-body-tertiary">¿Eres nuevo?</p>
+            <a routerLink="register" routerLinkActive="router-link-active" (click)="onOption('register')"  class="fs-6 estilos-link-enlace ms-1">Crea una cuenta</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
