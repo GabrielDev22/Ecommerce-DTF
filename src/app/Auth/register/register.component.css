@@ -1,0 +1,35 @@
+.mt-8rem{
+    margin-top: 3rem;
+}
+
+.mr-15rem{
+    margin-right: 15rem;
+}
+
+.mr-12rem{
+    margin-right: 12rem;
+}
+
+.ml-5rem{
+    margin-left: 4rem;
+}
+
+.estilos-font-awesome{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 1px 2px 3px beige;
+}
+
+.estilos-link-enlace{
+    text-decoration: none;
+    color: #000;
+    transition: all 0.7s ease-in-out;
+    cursor: pointer;
+}
+
+.estilos-link-enlace:hover{
+    color: rgb(0, 119, 255);
+}
+
+.img-create-user{
+    object-fit: fill;
+}

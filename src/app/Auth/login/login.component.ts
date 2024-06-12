@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
-import { Router } from 'express';
+import { RouterLink, RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
-  menuOption: string = '';
+  constructor(private router : Router){}
+
+  menuOption: string = '/login';
 
   onOption(menuOption: string){
-    this.menuOption = menuOption;
+    this.router.navigate([menuOption]);
   }
 
 }
