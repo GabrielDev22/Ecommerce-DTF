@@ -5,23 +5,25 @@
       </div>
       <div class="col-5">
         <div class="mb-5">
-          <h2 class="text-center">Inicio de sesíon</h2>
+          <h2 class="text-center">Inicio de sesíon</h2> 
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Username</label>
-          <input type="email" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Password</label>
-          <input type="password" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="*********">
-        </div>
-        <div>
-          <button type="button" class="btn mt-3 p-2 text-black btn-outline-info w-75">Login</button>
-          <div class="d-flex ml-5rem">
-            <p class="fs-6 text-body-tertiary">¿Eres nuevo?</p>
-            <a routerLink="register" (click)="onOption('register')"  class="fs-6 estilos-link-enlace ms-1">Crea una cuenta</a>
+       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Username</label>
+            <input type="email" class="form-control w-75 ml-5rem" formControlName="username" name="username" placeholder="name@example.com">
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Password</label>
+            <input type="password" class="form-control w-75 ml-5rem" formControlName="password" name="password" placeholder="*********">
+          </div>
+          <div>
+            <button type="submit" class="btn mt-3 p-2 text-black btn-outline-info w-75">Login</button>
+            <div class="d-flex ml-5rem">
+              <p class="fs-6 text-body-tertiary">¿Eres nuevo?</p>
+              <a routerLink="register" (click)="onOption('register')"  class="fs-6 estilos-link-enlace ms-1">Crea una cuenta</a>
+            </div>
+          </div>
+       </form> 
     </div>
   </div>
 </div>

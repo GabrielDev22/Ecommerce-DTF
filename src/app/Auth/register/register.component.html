@@ -1,35 +1,42 @@
 <div class="container text-center">
     <div class="row mt-8rem">
-      <div class="col">
+      <div class="col mt-5rem">
         <img class="rounded img-fluid shadow bg-black h-75 w-100 img-create-user" src="../../../assets/img/crearUsuario.jpg" alt="EcommerceImagen">
         </div>
         <div class="col-5">
           <div class="mb-2">
             <h2 class="text-center">Crear cuenta</h2>
           </div>
-          <div class="mb-2">
-            <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Nombre</label>
-            <input type="email" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="Nombre">
-          </div>
-          <div class="mb-2">
-            <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Apellido</label>
-            <input type="email" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="Apellido">
-          </div>
-          <div class="mb-2">
-            <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Usuario</label>
-            <input type="email" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div class="mb-2">
-            <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Contraseña</label>
-            <input type="password" class="form-control w-75 ml-5rem" id="exampleFormControlInput1" placeholder="*********">
-          </div>
-          <select class="form-select form-control w-75 ml-5rem" aria-label="Small select example">
-            <option selected disabled>Eligue un Rol</option>
-            <option value="1">Comprador</option>
-            <option value="2">Vendedor</option>
-          </select>
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="mb-2">
+              <label class="form-label mr-15rem estilos-font-awesome">Nombre</label>
+              <input type="text" class="form-control w-75 ml-5rem" name="name" formControlName="name" placeholder="Nombre">
+            </div>
+            <div class="mb-2">
+              <label class="form-label mr-15rem estilos-font-awesome">Apellido</label>
+              <input type="text" class="form-control w-75 ml-5rem" name="lastName" formControlName="lastName" placeholder="Apellido">
+            </div>
+            <div class="mb-2">
+              <label class="form-label mr-15rem estilos-font-awesome">Correo</label>
+              <input type="email" class="form-control w-75 ml-5rem" name="correo" formControlName="correo" placeholder="name@example.com">
+            </div>
+            <div class="mb-2">
+              <label class="form-label mr-15rem estilos-font-awesome">Usuario</label>
+              <input type="text" class="form-control w-75 ml-5rem" name="username" formControlName="username" placeholder="pepito123">
+            </div>
+            <div class="mb-2">
+              <label class="form-label mr-15rem estilos-font-awesome">Contraseña</label>
+              <input type="password" class="form-control w-75 ml-5rem" name="password" formControlName="password" placeholder="*********">
+            </div>
+            <div class="mb-2">
+              <label class="form-label mr-15rem estilos-font-awesome">Elige un Rol</label>
+              <select class="form-select w-75 ml-5rem" formControlName="rolesApp" name="rolesApp" [(ngModel)]="selectedRoles">
+                <option *ngFor="let role of rolesOptions" [ngValue]="role">{{ role }}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn mt-3 p-2 text-black btn-outline-info w-75">Crear cuenta</button>
+          </form>
           <div>
-            <button type="button" class="btn mt-3 p-2 text-black btn-outline-info w-75">Crear cuenta</button>
             <div class="d-flex ml-5rem">
                 <p class="fs-6 text-body-tertiary">¿Tienes cuenta?</p>
                 <a routerLink="login" (click)="onOption('login')" class="fs-6 estilos-link-enlace ms-1">Inicia sessíon</a>

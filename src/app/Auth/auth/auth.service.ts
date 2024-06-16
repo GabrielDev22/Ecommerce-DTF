@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { envirotment } from '../../../environments/enviroments';
 import { HttpClient } from '@angular/common/http';
-import { Router } from 'express';
 import { Observable } from 'rxjs';
-import { CreateUser } from '../model/authModel';
+import { CreateUser, LoginRequest } from '../model/authModel';
+import { Router } from '@angular/router';
 
 const APIURL = envirotment.apiUrl;
 
@@ -11,7 +11,7 @@ const APIURL = envirotment.apiUrl;
   providedIn: 'root'
 })
 
-export class AuthServiceService {
+export class AuthService {
   
   private authUser =  `${APIURL}/auth`;
 
@@ -21,8 +21,13 @@ export class AuthServiceService {
   ) { }
 
   createUser(createUser: CreateUser): Observable<any>{
+    console.log(createUser);
     return this.http.post<any>(`${this.authUser}/create`, createUser);
   }
-
+  
+  login(loginRequest: LoginRequest): Observable<any>{
+    console.log(loginRequest);
+    return this.http.post<any>(`${this.authUser}/login`, loginRequest);
+  }
 
 }

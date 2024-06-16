@@ -6,3 +6,13 @@ export interface CreateUser{
      password: string;
      rolesApp: string[];
 }
+
+export enum RolesApp{
+     COMPRADOR = 'COMPRADOR',
+     VENDEDOR = 'VENDEDOR'
+}
+
+export interface LoginRequest{
+     username: string;
+     password: string;
+}
