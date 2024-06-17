@@ -38,6 +38,11 @@ export class LoginComponent implements OnInit {
   onSubmit(): void{
     this.authService.login(this.myForm.value).subscribe(res =>{
       console.log(res);
+      if(res && res.status == true){
+        this.router.navigate(['/home']);
+      }else{
+        console.log("Login fallido");
+      }
     })
   }
 

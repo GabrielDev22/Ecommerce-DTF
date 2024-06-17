@@ -11,6 +11,9 @@
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Nombre</label>
               <input type="text" class="form-control w-75 ml-5rem" name="name" formControlName="name" placeholder="Nombre">
+                <div *ngIf="myForm.get('name')?.invalid && myForm.get('get')?.touched" class="text-danger">
+                  El campo Nombre es requerido
+                </div>  
             </div>
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Apellido</label>

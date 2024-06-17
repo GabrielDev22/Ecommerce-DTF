@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 export class RegisterComponent implements OnInit {
 
+  loading: boolean = false;
   menuOption : string = '';
   myForm!: UntypedFormGroup;
   rolesOptions = [RolesApp.COMPRADOR, RolesApp.VENDEDOR];
@@ -44,8 +45,18 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-      this.authService.createUser(this.myForm.value).subscribe(res => {
-        console.log(res);
+      let formValue = this.myForm.value;
+      if(!Array.isArray(formValue.rolesApp)){
+        formValue.rolesApp = [formValue.rolesApp];
+      }
+      if(this.myForm.invalid){
+        this.myForm.markAllAsTouched();
+        return;
+      }
+      this.authService.createUser(formValue).subscribe(res => {
+        if(res == 200){
+          this.onOption('login');
+        }
       })
   }
 
