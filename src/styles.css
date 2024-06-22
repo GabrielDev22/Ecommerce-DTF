@@ -1,1 +1,10 @@
+.form-error-container{
+    width: 30%;
+    color: red;
+    margin-top: 5px;
+    margin-left: 50px;
+}
 
+.fv-help-block{
+    font-size: 0.77em;
+}

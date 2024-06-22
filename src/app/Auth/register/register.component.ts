@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { CreateUser, RolesApp } from '../model/authModel';
-import { FormGroup, FormsModule, NgSelectOption, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,10 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 })
 
 export class RegisterComponent implements OnInit {
-
+  
   loading: boolean = false;
   menuOption : string = '';
   myForm!: UntypedFormGroup;
+  usernamePattern: string;
   rolesOptions = [RolesApp.COMPRADOR, RolesApp.VENDEDOR];
   selectedRoles: string[] = [];
 
@@ -27,7 +28,9 @@ export class RegisterComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private router : Router,
     private authService : AuthService,
-  ){}
+  ){
+    this.usernamePattern = '^[a-zA-Z0-9_-]{3,15}$';
+  }
 
   ngOnInit(){
     this.initForm();
@@ -35,9 +38,9 @@ export class RegisterComponent implements OnInit {
 
   private initForm(createUser? : CreateUser){
      this.myForm = this.fb.group({
-        name: [createUser?.name, Validators.compose([Validators.required])],
+        name: [createUser?.name || '', Validators.required, Validators.pattern(this.usernamePattern)],
         lastName: [createUser?.lastName, Validators.compose([Validators.required])],
-        correo: [createUser?.correo, Validators.compose([Validators.required])],
+        correo: ['', Validators.required, Validators.pattern('^[a-zA-Z]+(?:[a-zA-Z0-9._-]*[a-zA-Z0-9])?@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')],
         username: [createUser?.username, Validators.compose([Validators.required])],
         password: [createUser?.password, Validators.compose([Validators.required])],
         rolesApp: [createUser?.rolesApp, Validators.compose([Validators.required])]
@@ -55,7 +58,7 @@ export class RegisterComponent implements OnInit {
       }
       this.authService.createUser(formValue).subscribe(res => {
         if(res == 200){
-          this.onOption('login');
+          this.router.navigate(['/login']);
         }
       })
   }
@@ -64,6 +67,5 @@ export class RegisterComponent implements OnInit {
     this.router.navigate([menuOption]);
     this.menuOption = menuOption;
   }
-
 
 }

@@ -21,12 +21,10 @@ export class AuthService {
   ) { }
 
   createUser(createUser: CreateUser): Observable<any>{
-    console.log(createUser);
     return this.http.post<any>(`${this.authUser}/create`, createUser);
   }
   
   login(loginRequest: LoginRequest): Observable<any>{
-    console.log(loginRequest);
     return this.http.post<any>(`${this.authUser}/login`, loginRequest);
   }
 

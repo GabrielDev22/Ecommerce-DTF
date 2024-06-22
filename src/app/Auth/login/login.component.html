@@ -8,13 +8,36 @@
           <h2 class="text-center">Inicio de sesíon</h2> 
         </div>
        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+         <div *ngIf="showErrorMessage"  class="message-error-auth">
+           <div class="w-75 alert alert-danger margin-izquierda">
+             Usuario o contraseña incorrectas, Por favor, inténtelo  de nuevo.
+           </div>
+         </div>         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Username</label>
-            <input type="email" class="form-control w-75 ml-5rem" formControlName="username" name="username" placeholder="name@example.com">
+            <input type="email" class="form-control w-75 ml-5rem" formControlName="username" name="username" placeholder="name@example.com"
+            [ngClass]="{
+              'is-invalid border border-danger' : myForm.controls['username'].touched && myForm.controls['username'].invalid
+            }">
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+              validation: 'required',
+              message: 'Campo requerido',
+              control: myForm.controls['username']
+          }" 
+            ></ng-container>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label mr-15rem estilos-font-awesome">Password</label>
-            <input type="password" class="form-control w-75 ml-5rem" formControlName="password" name="password" placeholder="*********">
+            <input type="password" class="form-control w-75 ml-5rem" formControlName="password" name="password" placeholder="*********"
+            [ngClass]="{
+              'is-invalid border border-danger' : myForm.controls['password'].touched && myForm.controls['password'].invalid
+            }">
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+              validation: 'required',
+              message: 'Campo requerido',
+              control: myForm.controls['password']
+          }" 
+            ></ng-container>
           </div>
           <div>
             <button type="submit" class="btn mt-3 p-2 text-black btn-outline-info w-75">Login</button>
@@ -27,3 +50,13 @@
     </div>
   </div>
 </div>
+
+<ng-template #formError let-control="control" let-message="message" let-validation="validation" let-param="params">
+  <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+    <div class="form-error-container">
+      <div class="fv-help-block"> 
+        <span role="alert">{{message}}</span>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>

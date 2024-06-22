@@ -10,32 +10,83 @@
           <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Nombre</label>
-              <input type="text" class="form-control w-75 ml-5rem" name="name" formControlName="name" placeholder="Nombre">
-                <div *ngIf="myForm.get('name')?.invalid && myForm.get('get')?.touched" class="text-danger">
-                  El campo Nombre es requerido
-                </div>  
+              <input type="text" class="form-control w-75 ml-5rem" name="name" 
+              formControlName="name" placeholder="Nombre" [ngClass]="{
+                'is-invalid border border-danger': myForm.controls['name'].touched && myForm.controls['name'].invalid
+              }">
+                <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                  validation: 'required',
+                  message: 'Campo requerido',
+                  control: myForm.controls['name']
+              }" 
+                ></ng-container>
             </div>
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Apellido</label>
-              <input type="text" class="form-control w-75 ml-5rem" name="lastName" formControlName="lastName" placeholder="Apellido">
+              <input type="text" class="form-control w-75 ml-5rem" name="lastName" formControlName="lastName" placeholder="Apellido"
+                [ngClass]="{
+                  'is-invalid border border-danger' : myForm.controls['lastName'].touched && myForm.controls['lastName'].invalid
+                }">
+              <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: 'Campo requerido',
+                control: myForm.controls['lastName']
+            }" 
+              ></ng-container>
             </div>
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Correo</label>
-              <input type="email" class="form-control w-75 ml-5rem" name="correo" formControlName="correo" placeholder="name@example.com">
+              <input type="email" class="form-control w-75 ml-5rem" name="correo" formControlName="correo" placeholder="name@example.com"
+                [ngClass]="{
+                  'is-invalid border border-danger' : myForm.controls['correo'].touched && myForm.controls['correo'].invalid
+                }">
+                <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                  validation: 'required',
+                  message: 'Campo requerido',
+                  control: myForm.controls['correo']
+              }" 
+                ></ng-container>
             </div>
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Usuario</label>
-              <input type="text" class="form-control w-75 ml-5rem" name="username" formControlName="username" placeholder="pepito123">
+              <input type="text" class="form-control w-75 ml-5rem" name="username" formControlName="username" placeholder="pepito123"
+                [ngClass]="{
+                  'is-invalid border border-danger' : myForm.controls['username'].touched && myForm.controls['correo'].invalid
+                }">
+              <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: 'Campo requerido',
+                control: myForm.controls['username']
+            }" 
+              ></ng-container>
             </div>
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Contraseña</label>
-              <input type="password" class="form-control w-75 ml-5rem" name="password" formControlName="password" placeholder="*********">
+              <input type="password" class="form-control w-75 ml-5rem" name="password" formControlName="password" placeholder="*********"
+                [ngClass]="{
+                  'is-invalid border border-danger' : myForm.controls['password'].touched && myForm.controls['password'].invalid
+                }">
+              <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: 'Campo requerido',
+                control: myForm.controls['password']
+            }" 
+              ></ng-container>
             </div>
             <div class="mb-2">
               <label class="form-label mr-15rem estilos-font-awesome">Elige un Rol</label>
-              <select class="form-select w-75 ml-5rem" formControlName="rolesApp" name="rolesApp" [(ngModel)]="selectedRoles">
+              <select class="form-select w-75 ml-5rem" formControlName="rolesApp" name="rolesApp" [(ngModel)]="selectedRoles"
+              [ngClass]="{
+                'is-invalid border border-danger' : myForm.controls['rolesApp'].touched && myForm.controls['rolesApp'].invalid
+              }">
                 <option *ngFor="let role of rolesOptions" [ngValue]="role">{{ role }}</option>
               </select>
+              <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: 'Campo requerido',
+                control: myForm.controls['rolesApp']
+            }" 
+              ></ng-container>
             </div>
             <button type="submit" class="btn mt-3 p-2 text-black btn-outline-info w-75">Crear cuenta</button>
           </form>
@@ -48,3 +99,14 @@
       </div>
     </div>
   </div>
+
+
+  <ng-template #formError let-control="control" let-message="message" let-validation="validation" let-param="params">
+    <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+      <div class="form-error-container">
+        <div class="fv-help-block"> 
+          <span role="alert">{{message}}</span>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
