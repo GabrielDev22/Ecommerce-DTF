@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { envirotment } from '../../../environments/enviroments';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { CreateUser, LoginRequest } from '../model/authModel';
 import { Router } from '@angular/router';
 
@@ -25,7 +25,7 @@ export class AuthService {
   }
   
   login(loginRequest: LoginRequest): Observable<any>{
-    return this.http.post<any>(`${this.authUser}/login`, loginRequest);
+    return this.http.post<any>(`${this.authUser}/login`, loginRequest)
   }
 
 }

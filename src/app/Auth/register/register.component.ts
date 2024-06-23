@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, CommonModule, ReactiveFormsModule, HttpClientModule, NgSelectModule, HttpClientModule, FormsModule],
+  imports: [RouterLink, ReactiveFormsModule, NgSelectModule, HttpClientModule, FormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })

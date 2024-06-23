@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterModule, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { LoginRequest } from '../model/authModel';
 import { CommonModule } from '@angular/common';
@@ -10,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, RouterModule, HttpClientModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [RouterLink, RouterModule, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -38,15 +37,19 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSubmit(): void{
-    this.authService.login(this.myForm.value).subscribe(res =>{
-      console.log(res);
-      if(res && res.status == true)this.router.navigate(['/home']);
-    },error => {
-      console.log("Error al iniciar sesión:", error);
-      this.showErrorMessage = true;
-    })
-  }
+  onSubmit(){
+    this.authService.login(this.myForm.value).subscribe(res => {
+        if(res && res.status == true){
+          localStorage.setItem('jwt', res.jwt);
+          this.router.navigate(['/home']);
+        }else{
+          this.showErrorMessage = true;
+        }
+      },error => {
+        console.log("Error al iniciar sesión:", error);
+        this.showErrorMessage = true;
+      })
+    }
 
   onOption(menuOption: string){
     this.router.navigate([menuOption]);
