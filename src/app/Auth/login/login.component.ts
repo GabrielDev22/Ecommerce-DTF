@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   menuOption: string = '/login';
   myForm!: UntypedFormGroup;
   showErrorMessage: boolean = false;
+  passwordFieldType: string = 'password';
 
   constructor(
     private router : Router,
@@ -49,7 +50,11 @@ export class LoginComponent implements OnInit {
         console.log("Error al iniciar sesión:", error);
         this.showErrorMessage = true;
       })
-    }
+  }
+
+  togglePasswordVisibility(){
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
 
   onOption(menuOption: string){
     this.router.navigate([menuOption]);

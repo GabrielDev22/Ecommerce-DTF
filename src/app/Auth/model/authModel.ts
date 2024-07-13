@@ -16,3 +16,7 @@ export interface LoginRequest{
      username: string;
      password: string;
 }
+
+export interface TokenRefreshRequest{
+     refreshToken: string;
+}

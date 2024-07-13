@@ -27,10 +27,15 @@
 }
 
 .message-error-auth{
+    width: 20rem;
     font-size: 12px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 4.5rem;
 }
 
-.margin-izquierda{
-    margin-left: 60px;
+.password-toggle-icon{
+    position: absolute;
+    cursor: pointer;
+    margin-left: 22rem;
+    margin-bottom: 2px;
 }
