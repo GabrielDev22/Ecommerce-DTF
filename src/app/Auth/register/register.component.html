@@ -9,7 +9,7 @@
           </div>
           <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <div class="mb-2">
-              <label class="form-label mr-15rem estilos-font-awesome">Nombre</label>
+              <label class="form-label mr-20rem estilos-font-awesome">Nombre</label>
               <input type="text" class="form-control w-75 ml-5rem" name="name" 
               formControlName="name" placeholder="Nombre" [ngClass]="{
                 'is-invalid border border-danger': myForm.controls['name'].touched && myForm.controls['name'].invalid
@@ -22,7 +22,7 @@
                 ></ng-container>
             </div>
             <div class="mb-2">
-              <label class="form-label mr-15rem estilos-font-awesome">Apellido</label>
+              <label class="form-label mr-20rem estilos-font-awesome">Apellido</label>
               <input type="text" class="form-control w-75 ml-5rem" name="lastName" formControlName="lastName" placeholder="Apellido"
                 [ngClass]="{
                   'is-invalid border border-danger' : myForm.controls['lastName'].touched && myForm.controls['lastName'].invalid
@@ -35,7 +35,7 @@
               ></ng-container>
             </div>
             <div class="mb-2">
-              <label class="form-label mr-15rem estilos-font-awesome">Correo</label>
+              <label class="form-label mr-20rem estilos-font-awesome">Correo</label>
               <input type="email" class="form-control w-75 ml-5rem" name="correo" formControlName="correo" placeholder="name@example.com"
                 [ngClass]="{
                   'is-invalid border border-danger' : myForm.controls['correo'].touched && myForm.controls['correo'].invalid
@@ -48,7 +48,7 @@
                 ></ng-container>
             </div>
             <div class="mb-2">
-              <label class="form-label mr-15rem estilos-font-awesome">Usuario</label>
+              <label class="form-label mr-20rem estilos-font-awesome">Usuario</label>
               <input type="text" class="form-control w-75 ml-5rem" name="username" formControlName="username" placeholder="pepito123"
                 [ngClass]="{
                   'is-invalid border border-danger' : myForm.controls['username'].touched && myForm.controls['correo'].invalid
@@ -61,7 +61,7 @@
               ></ng-container>
             </div>
             <div class="mb-2">
-              <label class="form-label mr-15rem estilos-font-awesome">Contraseña</label>
+              <label class="form-label mr-20rem estilos-font-awesome">Contraseña</label>
               <input type="password" class="form-control w-75 ml-5rem" name="password" formControlName="password" placeholder="*********"
                 [ngClass]="{
                   'is-invalid border border-danger' : myForm.controls['password'].touched && myForm.controls['password'].invalid
@@ -74,7 +74,7 @@
               ></ng-container>
             </div>
             <div class="mb-2">
-              <label class="form-label mr-15rem estilos-font-awesome">Elige un Rol</label>
+              <label class="form-label mr-20rem estilos-font-awesome">Elige un Rol</label>
               <select class="form-select w-75 ml-5rem" formControlName="rolesApp" name="rolesApp" [(ngModel)]="selectedRoles"
               [ngClass]="{
                 'is-invalid border border-danger' : myForm.controls['rolesApp'].touched && myForm.controls['rolesApp'].invalid
@@ -104,7 +104,7 @@
   <ng-template #formError let-control="control" let-message="message" let-validation="validation" let-param="params">
     <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
       <div class="form-error-container">
-        <div class="fv-help-block"> 
+        <div> 
           <span role="alert">{{message}}</span>
         </div>
       </div>

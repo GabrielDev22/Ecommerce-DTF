@@ -1,0 +1,28 @@
+<ng-container>
+  <app-home></app-home>
+  <div class="container content-products">
+      <div class="container text-center">
+          <div class="row">
+              <div class="col" *ngFor="let product of data">
+                  <div class="card" style="width: 18rem;">
+                      <img  [src]="imageUrls[product.productImagen]" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{product.productName}}</h5>
+                        <p class="card-text"><span class="fw-bold">Descripcion:</span> {{product.productDescription}}</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><span class="fw-bold">Precio</span> {{product.productPrice}}</li>
+                        <li class="list-group-item"><span class="fw-bold">Usuario:</span> {{product.productSellerName}}</li>
+                      </ul>
+                      <div class="card-body">
+                        <button class="btn btn-primary me-4">Hola</button>
+                        <button class="btn btn-primary">Adiios</button>
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</ng-container>
+
+

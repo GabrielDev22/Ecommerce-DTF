@@ -25,7 +25,11 @@ export class AuthService {
   }
   
   login(loginRequest: LoginRequest): Observable<any>{
-    return this.http.post<any>(`${this.authUser}/login`, loginRequest)
+    return this.http.post<any>(`${this.authUser}/login`, loginRequest).pipe(
+      tap(response => {
+        localStorage.setItem('jwt', response.jwt);
+      })
+    )
   }
 
   logout(): Observable<any>{

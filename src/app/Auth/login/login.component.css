@@ -2,8 +2,8 @@
     margin-top: 8rem;
 }
 
-.mr-15rem{
-    margin-right: 15rem;
+.mr-20rem{
+    margin-right: 20rem;
 }
 
 .ml-5rem{
@@ -36,6 +36,6 @@
 .password-toggle-icon{
     position: absolute;
     cursor: pointer;
-    margin-left: 22rem;
-    margin-bottom: 2px;
+    margin-left: 28%;
+    margin-bottom: 3px;
 }

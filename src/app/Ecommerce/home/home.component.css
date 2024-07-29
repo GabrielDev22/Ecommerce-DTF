@@ -10,6 +10,13 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: 400;
     font-size: 16px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.estilos-link-navbar:hover{
+    transform: translate(3px, -3px);
+    border-bottom: 2px solid white;
 }
 
 .btn-collection-search{
@@ -24,4 +31,9 @@
 
 .cursor-pointer{
     cursor: pointer;
+}
+
+.content-products{
+    margin-top: 5rem;
+    padding: 10px;
 }
